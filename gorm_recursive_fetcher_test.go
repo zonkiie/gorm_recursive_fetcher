@@ -72,6 +72,17 @@ func getParams() (id int) {
 	return
 }
 
+func fetch(db *gorm.DB, id interface{}) (d rs, found bool) {
+	
+	//db.First(&d, id)
+	found = false
+	found = !db.Find(&d, id).RecordNotFound()
+	if found {
+		fetchRec(db, &d)
+	}
+	return
+}
+
 func main() {
 	db = InitDB()
 	defer db.Close()

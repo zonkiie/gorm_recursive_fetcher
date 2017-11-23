@@ -15,7 +15,6 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"os"
-	"flag"
 	"strings"
 )
 
@@ -107,16 +106,5 @@ func fetchRec(db *gorm.DB, data interface{}) {
 			}
 		}
 	}
-}
-
-func fetch(db *gorm.DB, id interface{}) (d rs, found bool) {
-	
-	//db.First(&d, id)
-	found = false
-	found = !db.Find(&d, id).RecordNotFound()
-	if found {
-		fetchRec(db, &d)
-	}
-	return
 }
 
