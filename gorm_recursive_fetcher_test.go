@@ -1,17 +1,11 @@
-package main
+package gorm_recursive_fetcher
 
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"fmt"
-	"reflect"
-	"regexp"
-	"encoding/json"
-	"encoding/xml"
-	//"strconv"
-	"os"
 	"flag"
-	"strings"
+	"testing"
 )
 
 func InitDB() *gorm.DB {
@@ -83,7 +77,7 @@ func fetch(db *gorm.DB, id interface{}) (d rs, found bool) {
 	return
 }
 
-func main() {
+func TestMain(t *testing.T) {
 	db = InitDB()
 	defer db.Close()
 	id := getParams()
