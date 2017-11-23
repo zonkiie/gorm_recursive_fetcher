@@ -1,3 +1,19 @@
+package main
+
+import (
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"fmt"
+	"reflect"
+	"regexp"
+	"encoding/json"
+	"encoding/xml"
+	//"strconv"
+	"os"
+	"flag"
+	"strings"
+)
+
 func InitDB() *gorm.DB {
   db, err := gorm.Open("sqlite3", ":memory:")
   if err != nil {
