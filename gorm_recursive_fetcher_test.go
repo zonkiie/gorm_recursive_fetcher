@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"flag"
 	"testing"
+	"os"
 )
 
 func InitDB() *gorm.DB {
@@ -85,5 +86,7 @@ func TestMain(t *testing.T) {
 	rs, found := fetch(db, id)
 	if found {
 		fmt.Print(XmlMarshal(rs) + "\n")
+		os.Exit(0)
 	}
+	os.Exit(1)
 }
